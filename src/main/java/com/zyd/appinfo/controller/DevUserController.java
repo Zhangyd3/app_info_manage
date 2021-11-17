@@ -1,5 +1,7 @@
 package com.zyd.appinfo.controller;
 
+import com.zyd.appinfo.service.DevUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/dev")
 public class DevUserController {
+    @Autowired
+    private DevUserService devUserService;
     @RequestMapping("/login")
     private String login(){
         return "devlogin";
