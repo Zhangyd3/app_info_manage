@@ -14,11 +14,11 @@
     <result column="modifyDate" jdbcType="TIMESTAMP" property="modifydate" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, devCode, devName, devPassword, devEmail, devInfo, createdBy, creationDate, modifyBy, 
+    id, devCode, devName, devPassword, devEmail, devInfo, createdBy, creationDate, modifyBy,
     modifyDate
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from dev_user
     where id = #{id,jdbcType=BIGINT}
@@ -31,14 +31,14 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zyd.appinfo.pojo.DevUser" useGeneratedKeys="true">
-    insert into dev_user (devCode, devName, devPassword, 
-      devEmail, devInfo, createdBy, 
-      creationDate, modifyBy, modifyDate
-      )
-    values (#{devcode,jdbcType=VARCHAR}, #{devname,jdbcType=VARCHAR}, #{devpassword,jdbcType=VARCHAR}, 
-      #{devemail,jdbcType=VARCHAR}, #{devinfo,jdbcType=VARCHAR}, #{createdby,jdbcType=BIGINT}, 
-      #{creationdate,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=BIGINT}, #{modifydate,jdbcType=TIMESTAMP}
-      )
+    insert into dev_user (devCode, devName, devPassword,
+                          devEmail, devInfo, createdBy,
+                          creationDate, modifyBy, modifyDate
+    )
+    values (#{devcode,jdbcType=VARCHAR}, #{devname,jdbcType=VARCHAR}, #{devpassword,jdbcType=VARCHAR},
+            #{devemail,jdbcType=VARCHAR}, #{devinfo,jdbcType=VARCHAR}, #{createdby,jdbcType=BIGINT},
+            #{creationdate,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=BIGINT}, #{modifydate,jdbcType=TIMESTAMP}
+           )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zyd.appinfo.pojo.DevUser" useGeneratedKeys="true">
     insert into dev_user
@@ -137,14 +137,14 @@
   <update id="updateByPrimaryKey" parameterType="com.zyd.appinfo.pojo.DevUser">
     update dev_user
     set devCode = #{devcode,jdbcType=VARCHAR},
-      devName = #{devname,jdbcType=VARCHAR},
-      devPassword = #{devpassword,jdbcType=VARCHAR},
-      devEmail = #{devemail,jdbcType=VARCHAR},
-      devInfo = #{devinfo,jdbcType=VARCHAR},
-      createdBy = #{createdby,jdbcType=BIGINT},
-      creationDate = #{creationdate,jdbcType=TIMESTAMP},
-      modifyBy = #{modifyby,jdbcType=BIGINT},
-      modifyDate = #{modifydate,jdbcType=TIMESTAMP}
+        devName = #{devname,jdbcType=VARCHAR},
+        devPassword = #{devpassword,jdbcType=VARCHAR},
+        devEmail = #{devemail,jdbcType=VARCHAR},
+        devInfo = #{devinfo,jdbcType=VARCHAR},
+        createdBy = #{createdby,jdbcType=BIGINT},
+        creationDate = #{creationdate,jdbcType=TIMESTAMP},
+        modifyBy = #{modifyby,jdbcType=BIGINT},
+        modifyDate = #{modifydate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
