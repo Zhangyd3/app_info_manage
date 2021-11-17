@@ -1,5 +1,6 @@
 package com.zyd.appinfo.controller;
 
+import com.zyd.appinfo.pojo.DevUser;
 import com.zyd.appinfo.service.DevUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,13 @@ public class DevUserController {
     }
     @RequestMapping("/dologin")
     private String dologin(String devCode,String devPassword){
-        return "devloper/main";
+        DevUser devUser = devUserService.findByDevCode(devCode);
+        if (devUser!=null){
+            if (devUser.getDevpassword().equals(devPassword)) {
+                return "developer/main";
+            }
+            return "devlogin";
+        }
+        return "devlogin";
     }
 }
