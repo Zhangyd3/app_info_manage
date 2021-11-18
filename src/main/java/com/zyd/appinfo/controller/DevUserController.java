@@ -5,6 +5,7 @@ import com.zyd.appinfo.service.DevUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import javax.servlet.http.HttpSession;
 
 /**
  * @Author zyd
@@ -21,14 +22,20 @@ public class DevUserController {
         return "devlogin";
     }
     @RequestMapping("/dologin")
-    private String dologin(String devCode,String devPassword){
+    private String dologin(String devCode, String devPassword, HttpSession session){
         DevUser devUser = devUserService.findByDevCode(devCode);
         if (devUser!=null){
             if (devUser.getDevpassword().equals(devPassword)) {
+                session.setAttribute("devUser",devUser);
                 return "developer/main";
             }
             return "devlogin";
         }
         return "devlogin";
+    }
+    @RequestMapping("/logout")
+    private String logout(HttpSession session){
+        session.removeAttribute("devUser");
+        return "redirect:/index.jsp";
     }
 }
