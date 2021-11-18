@@ -9,6 +9,7 @@
        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 <!--    静态资源放行-->
     <mvc:resources mapping="/statics/**" location="/statics/"></mvc:resources>
+    <mvc:resources mapping="/AppInfoSystem/**" location="/AppInfoSystem/"></mvc:resources>
     <context:component-scan base-package="com.zyd.appinfo.controller"></context:component-scan>
 <!--    开启 @RequestMapping注解-->
     <mvc:annotation-driven>
