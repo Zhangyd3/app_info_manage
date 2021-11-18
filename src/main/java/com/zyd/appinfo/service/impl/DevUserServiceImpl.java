@@ -1,6 +1,6 @@
 package com.zyd.appinfo.service.impl;
 
-import com.zyd.appinfo.mapper.DevUserDao;
+import com.zyd.appinfo.mapper.DevUserMapper;
 import com.zyd.appinfo.pojo.DevUser;
 import com.zyd.appinfo.service.DevUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 @Service("devUserService")
 public class DevUserServiceImpl implements DevUserService {
     @Autowired
-    private DevUserDao devUserDao;
+    private DevUserMapper devUserMapper;
     @Override
     public DevUser findByDevCode(String devCode) {
-        return devUserDao.findByDevCode(devCode);
+        return devUserMapper.findByDevCode(devCode);
     }
 }

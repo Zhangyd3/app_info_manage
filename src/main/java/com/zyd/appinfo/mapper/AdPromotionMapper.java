@@ -2,7 +2,7 @@ package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.AdPromotion;
 
-public interface AdPromotionDao {
+public interface AdPromotionMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(AdPromotion record);

@@ -26,8 +26,8 @@ public class DevUserController {
     private String dologin(String devCode, String devPassword, HttpSession session){
         DevUser devUser = devUserService.findByDevCode(devCode);
         if (devUser!=null){
-            if (devUser.getDevpassword().equals(devPassword)) {
-                session.setAttribute("devUser",devUser);
+            if (devUser.getDevPassword().equals(devPassword)) {
+                session.setAttribute("devUserSession",devUser);
                 return "developer/main";
             }
             return "devlogin";
@@ -36,7 +36,7 @@ public class DevUserController {
     }
     @RequestMapping("/logout")
     private String logout(HttpSession session){
-        session.removeAttribute("devUser");
+        session.removeAttribute("devUserSession");
         return "redirect:/index.jsp";
     }
 }

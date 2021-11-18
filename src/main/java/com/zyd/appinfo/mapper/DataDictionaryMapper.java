@@ -2,7 +2,7 @@ package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.DataDictionary;
 
-public interface DataDictionaryDao {
+public interface DataDictionaryMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(DataDictionary record);

@@ -2,7 +2,7 @@ package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.BackendUser;
 
-public interface BackendUserDao {
+public interface BackendUserMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(BackendUser record);

@@ -2,7 +2,7 @@ package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.AppCategory;
 
-public interface AppCategoryDao {
+public interface AppCategoryMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(AppCategory record);

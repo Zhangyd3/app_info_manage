@@ -2,7 +2,7 @@ package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.AppInfo;
 
-public interface AppInfoDao {
+public interface AppInfoMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(AppInfo record);

@@ -2,7 +2,7 @@ package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.AppVersion;
 
-public interface AppVersionDao {
+public interface AppVersionMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(AppVersion record);

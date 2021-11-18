@@ -7,7 +7,6 @@ import java.util.Date;
  * dev_user
  * @author 
  */
-
 public class DevUser implements Serializable {
     /**
      * 主键id
@@ -17,47 +16,47 @@ public class DevUser implements Serializable {
     /**
      * 开发者帐号
      */
-    private String devcode;
+    private String devCode;
 
     /**
      * 开发者名称
      */
-    private String devname;
+    private String devName;
 
     /**
      * 开发者密码
      */
-    private String devpassword;
+    private String devPassword;
 
     /**
      * 开发者电子邮箱
      */
-    private String devemail;
+    private String devEmail;
 
     /**
      * 开发者简介
      */
-    private String devinfo;
+    private String devInfo;
 
     /**
      * 创建者（来源于backend_user用户表的用户id）
      */
-    private Long createdby;
+    private Long createdBy;
 
     /**
      * 创建时间
      */
-    private Date creationdate;
+    private Date creationDate;
 
     /**
      * 更新者（来源于backend_user用户表的用户id）
      */
-    private Long modifyby;
+    private Long modifyBy;
 
     /**
      * 最新更新时间
      */
-    private Date modifydate;
+    private Date modifyDate;
 
     private static final long serialVersionUID = 1L;
 
@@ -69,79 +68,76 @@ public class DevUser implements Serializable {
         this.id = id;
     }
 
-    public String getDevcode() {
-        return devcode;
+    public String getDevCode() {
+        return devCode;
     }
 
-    public void setDevcode(String devcode) {
-        this.devcode = devcode;
+    public void setDevCode(String devCode) {
+        this.devCode = devCode;
     }
 
-    public String getDevname() {
-        return devname;
+    public String getDevName() {
+        return devName;
     }
 
-    public void setDevname(String devname) {
-        this.devname = devname;
+    public void setDevName(String devName) {
+        this.devName = devName;
     }
 
-    public String getDevpassword() {
-        return devpassword;
+    public String getDevPassword() {
+        return devPassword;
     }
 
-    public void setDevpassword(String devpassword) {
-        this.devpassword = devpassword;
+    public void setDevPassword(String devPassword) {
+        this.devPassword = devPassword;
     }
 
-    public String getDevemail() {
-        return devemail;
+    public String getDevEmail() {
+        return devEmail;
     }
 
-    public void setDevemail(String devemail) {
-        this.devemail = devemail;
+    public void setDevEmail(String devEmail) {
+        this.devEmail = devEmail;
     }
 
-    public String getDevinfo() {
-        return devinfo;
+    public String getDevInfo() {
+        return devInfo;
     }
 
-    public void setDevinfo(String devinfo) {
-        this.devinfo = devinfo;
+    public void setDevInfo(String devInfo) {
+        this.devInfo = devInfo;
     }
 
-    public Long getCreatedby() {
-        return createdby;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Date getCreationdate() {
-        return creationdate;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreationdate(Date creationdate) {
-        this.creationdate = creationdate;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public Long getModifyby() {
-        return modifyby;
+    public Long getModifyBy() {
+        return modifyBy;
     }
 
-    public void setModifyby(Long modifyby) {
-        this.modifyby = modifyby;
+    public void setModifyBy(Long modifyBy) {
+        this.modifyBy = modifyBy;
     }
 
-    public Date getModifydate() {
-        return modifydate;
+    public Date getModifyDate() {
+        return modifyDate;
     }
 
-    public void setModifydate(Date modifydate) {
-        this.modifydate = modifydate;
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 }
