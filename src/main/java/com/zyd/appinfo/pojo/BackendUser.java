@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * ad_promotion
+ * backend_user
  * @author 
  */
 public class BackendUser implements Serializable {
@@ -14,34 +14,19 @@ public class BackendUser implements Serializable {
     private Long id;
 
     /**
-     * appId（来源于：app_info表的主键id）
+     * 用户编码
      */
-    private Long appId;
+    private String userCode;
 
     /**
-     * 广告图片存储路径
+     * 用户名称
      */
-    private String adPicPath;
+    private String userName;
 
     /**
-     * 广告点击量
+     * 用户角色类型（来源于数据字典表，分为：超管、财务、市场、运营、销售）
      */
-    private Long adPV;
-
-    /**
-     * 轮播位（1-n）
-     */
-    private Integer carouselPosition;
-
-    /**
-     * 起效时间
-     */
-    private Date startTime;
-
-    /**
-     * 失效时间
-     */
-    private Date endTime;
+    private Long userType;
 
     /**
      * 创建者（来源于backend_user用户表的用户id）
@@ -63,6 +48,11 @@ public class BackendUser implements Serializable {
      */
     private Date modifyDate;
 
+    /**
+     * 用户密码
+     */
+    private String userPassword;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -73,52 +63,28 @@ public class BackendUser implements Serializable {
         this.id = id;
     }
 
-    public Long getAppId() {
-        return appId;
+    public String getUserCode() {
+        return userCode;
     }
 
-    public void setAppId(Long appId) {
-        this.appId = appId;
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
     }
 
-    public String getAdPicPath() {
-        return adPicPath;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAdPicPath(String adPicPath) {
-        this.adPicPath = adPicPath;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public Long getAdPV() {
-        return adPV;
+    public Long getUserType() {
+        return userType;
     }
 
-    public void setAdPV(Long adPV) {
-        this.adPV = adPV;
-    }
-
-    public Integer getCarouselPosition() {
-        return carouselPosition;
-    }
-
-    public void setCarouselPosition(Integer carouselPosition) {
-        this.carouselPosition = carouselPosition;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setUserType(Long userType) {
+        this.userType = userType;
     }
 
     public Long getCreatedBy() {
@@ -151,5 +117,13 @@ public class BackendUser implements Serializable {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 }

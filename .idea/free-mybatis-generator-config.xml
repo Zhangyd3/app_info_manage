@@ -8,9 +8,9 @@
             <Config>
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
-              <option name="daoName" value="AdPromotionDao" />
+              <option name="daoName" value="AdPromotionMapper" />
               <option name="daoPackage" value="com.zyd.appinfo.mapper" />
-              <option name="daoPostfix" value="Dao" />
+              <option name="daoPostfix" value="Mapper" />
               <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="AdPromotion" />
               <option name="modelPackage" value="com.zyd.appinfo.pojo" />
@@ -32,9 +32,9 @@
             <Config>
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
-              <option name="daoName" value="AppCategoryDao" />
+              <option name="daoName" value="AppCategoryMapper" />
               <option name="daoPackage" value="com.zyd.appinfo.mapper" />
-              <option name="daoPostfix" value="Dao" />
+              <option name="daoPostfix" value="Mapper" />
               <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="AppCategory" />
               <option name="modelPackage" value="com.zyd.appinfo.pojo" />
@@ -56,9 +56,9 @@
             <Config>
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
-              <option name="daoName" value="AppInfoDao" />
+              <option name="daoName" value="AppInfoMapper" />
               <option name="daoPackage" value="com.zyd.appinfo.mapper" />
-              <option name="daoPostfix" value="Dao" />
+              <option name="daoPostfix" value="Mapper" />
               <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="AppInfo" />
               <option name="modelPackage" value="com.zyd.appinfo.pojo" />
@@ -80,9 +80,9 @@
             <Config>
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
-              <option name="daoName" value="AppVersionDao" />
+              <option name="daoName" value="AppVersionMapper" />
               <option name="daoPackage" value="com.zyd.appinfo.mapper" />
-              <option name="daoPostfix" value="Dao" />
+              <option name="daoPostfix" value="Mapper" />
               <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="AppVersion" />
               <option name="modelPackage" value="com.zyd.appinfo.pojo" />
@@ -104,9 +104,9 @@
             <Config>
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
-              <option name="daoName" value="BackendUserDao" />
+              <option name="daoName" value="BackendUserMapper" />
               <option name="daoPackage" value="com.zyd.appinfo.mapper" />
-              <option name="daoPostfix" value="Dao" />
+              <option name="daoPostfix" value="Mapper" />
               <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="BackendUser" />
               <option name="modelPackage" value="com.zyd.appinfo.pojo" />

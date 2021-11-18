@@ -1,158 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zyd.appinfo.mapper.AppInfoMapper">
-  <resultMap id="BaseResultMap" type="com.zyd.appinfo.pojo.AppInfo">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="appId" jdbcType="BIGINT" property="appId" />
-    <result column="adPicPath" jdbcType="VARCHAR" property="adPicPath" />
-    <result column="adPV" jdbcType="BIGINT" property="adPV" />
-    <result column="carouselPosition" jdbcType="INTEGER" property="carouselPosition" />
-    <result column="startTime" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="endTime" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="createdBy" jdbcType="BIGINT" property="createdBy" />
-    <result column="creationDate" jdbcType="TIMESTAMP" property="creationDate" />
-    <result column="modifyBy" jdbcType="BIGINT" property="modifyBy" />
-    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, appId, adPicPath, adPV, carouselPosition, startTime, endTime, createdBy, creationDate, 
-    modifyBy, modifyDate
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from ad_promotion
-    where id = #{id,jdbcType=BIGINT}
+  <cache></cache>
+  <select id="findAppByAppInfo" resultType="com.zyd.appinfo.pojo.AppInfo">
+    select APKName,softwareName,softwareSize,flatformId,dd2.valueName flatformName,status,dd.valueName statusName,downloads,versionId,av.versionNo versionNo,categoryLevel1,categoryLevel2,categoryLevel3,ac1.categoryName categoryLevel1Name,ac2.categoryName categoryLevel2Name,ac3.categoryName categoryLevel3Name  from app_info i left join data_dictionary dd on i.status = dd.valueId and dd.typeCode='APP_STATUS'
+    left join app_category ac1 on i.categoryLevel1 = ac1.id
+    left join data_dictionary dd2 on i.flatformId = dd2.valueId and dd2.typeCode='APP_FLATFORM'
+    left join app_category ac2 on i.categoryLevel2 = ac2.id
+    left join app_category ac3 on i.categoryLevel3 = ac3.id
+    left join app_version av on i.versionId = av.id
+    <where>
+        <if test="appInfo.categoryLevel1 !=null and appInfo.categoryLevel1 != 0 ">
+          categoryLevel1=#{appInfo.categoryLevel1}
+        </if>
+      <if test="appInfo.categoryLevel2 !=null and appInfo.categoryLevel2 != 0 ">
+            and categoryLevel2=#{appInfo.categoryLevel2}
+      </if>
+      <if test="appInfo.categoryLevel3 !=null and appInfo.categoryLevel3 != 0 ">
+        and categoryLevel3=#{appInfo.categoryLevel3}
+      </if>
+      <if test="appInfo.flatformId !=null and appInfo.flatformId != 0 ">
+        and flatformId=#{appInfo.flatformId}
+      </if>
+      <if test="appInfo.status !=null and appInfo.status != 0 ">
+        and status=#{appInfo.status}
+      </if>
+      <if test="appInfo.softwareName !=null ">
+        and softwareName like concat('%',#{appInfo.softwareName},'%')
+      </if>
+    </where>
+     limit #{start},5
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from ad_promotion
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zyd.appinfo.pojo.AppInfo" useGeneratedKeys="true">
-    insert into ad_promotion (appId, adPicPath, adPV, 
-      carouselPosition, startTime, endTime, 
-      createdBy, creationDate, modifyBy, 
-      modifyDate)
-    values (#{appId,jdbcType=BIGINT}, #{adPicPath,jdbcType=VARCHAR}, #{adPV,jdbcType=BIGINT}, 
-      #{carouselPosition,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{createdBy,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=BIGINT}, 
-      #{modifyDate,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zyd.appinfo.pojo.AppInfo" useGeneratedKeys="true">
-    insert into ad_promotion
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="appId != null">
-        appId,
-      </if>
-      <if test="adPicPath != null">
-        adPicPath,
-      </if>
-      <if test="adPV != null">
-        adPV,
-      </if>
-      <if test="carouselPosition != null">
-        carouselPosition,
-      </if>
-      <if test="startTime != null">
-        startTime,
-      </if>
-      <if test="endTime != null">
-        endTime,
-      </if>
-      <if test="createdBy != null">
-        createdBy,
-      </if>
-      <if test="creationDate != null">
-        creationDate,
-      </if>
-      <if test="modifyBy != null">
-        modifyBy,
-      </if>
-      <if test="modifyDate != null">
-        modifyDate,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="appId != null">
-        #{appId,jdbcType=BIGINT},
-      </if>
-      <if test="adPicPath != null">
-        #{adPicPath,jdbcType=VARCHAR},
-      </if>
-      <if test="adPV != null">
-        #{adPV,jdbcType=BIGINT},
-      </if>
-      <if test="carouselPosition != null">
-        #{carouselPosition,jdbcType=INTEGER},
-      </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdBy != null">
-        #{createdBy,jdbcType=BIGINT},
-      </if>
-      <if test="creationDate != null">
-        #{creationDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyBy != null">
-        #{modifyBy,jdbcType=BIGINT},
-      </if>
-      <if test="modifyDate != null">
-        #{modifyDate,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zyd.appinfo.pojo.AppInfo">
-    update ad_promotion
-    <set>
-      <if test="appId != null">
-        appId = #{appId,jdbcType=BIGINT},
-      </if>
-      <if test="adPicPath != null">
-        adPicPath = #{adPicPath,jdbcType=VARCHAR},
-      </if>
-      <if test="adPV != null">
-        adPV = #{adPV,jdbcType=BIGINT},
-      </if>
-      <if test="carouselPosition != null">
-        carouselPosition = #{carouselPosition,jdbcType=INTEGER},
-      </if>
-      <if test="startTime != null">
-        startTime = #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        endTime = #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdBy != null">
-        createdBy = #{createdBy,jdbcType=BIGINT},
-      </if>
-      <if test="creationDate != null">
-        creationDate = #{creationDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyBy != null">
-        modifyBy = #{modifyBy,jdbcType=BIGINT},
-      </if>
-      <if test="modifyDate != null">
-        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zyd.appinfo.pojo.AppInfo">
-    update ad_promotion
-    set appId = #{appId,jdbcType=BIGINT},
-      adPicPath = #{adPicPath,jdbcType=VARCHAR},
-      adPV = #{adPV,jdbcType=BIGINT},
-      carouselPosition = #{carouselPosition,jdbcType=INTEGER},
-      startTime = #{startTime,jdbcType=TIMESTAMP},
-      endTime = #{endTime,jdbcType=TIMESTAMP},
-      createdBy = #{createdBy,jdbcType=BIGINT},
-      creationDate = #{creationDate,jdbcType=TIMESTAMP},
-      modifyBy = #{modifyBy,jdbcType=BIGINT},
-      modifyDate = #{modifyDate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
 </mapper>

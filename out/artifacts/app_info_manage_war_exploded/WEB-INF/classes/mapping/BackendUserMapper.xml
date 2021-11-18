@@ -3,61 +3,48 @@
 <mapper namespace="com.zyd.appinfo.mapper.BackendUserMapper">
   <resultMap id="BaseResultMap" type="com.zyd.appinfo.pojo.BackendUser">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="appId" jdbcType="BIGINT" property="appId" />
-    <result column="adPicPath" jdbcType="VARCHAR" property="adPicPath" />
-    <result column="adPV" jdbcType="BIGINT" property="adPV" />
-    <result column="carouselPosition" jdbcType="INTEGER" property="carouselPosition" />
-    <result column="startTime" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="endTime" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="userCode" jdbcType="VARCHAR" property="userCode" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="userType" jdbcType="BIGINT" property="userType" />
     <result column="createdBy" jdbcType="BIGINT" property="createdBy" />
     <result column="creationDate" jdbcType="TIMESTAMP" property="creationDate" />
     <result column="modifyBy" jdbcType="BIGINT" property="modifyBy" />
     <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="userPassword" jdbcType="VARCHAR" property="userPassword" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, appId, adPicPath, adPV, carouselPosition, startTime, endTime, createdBy, creationDate, 
-    modifyBy, modifyDate
+    id, userCode, userName, userType, createdBy, creationDate, modifyBy, modifyDate, 
+    userPassword
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ad_promotion
+    from backend_user
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from ad_promotion
+    delete from backend_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zyd.appinfo.pojo.BackendUser" useGeneratedKeys="true">
-    insert into ad_promotion (appId, adPicPath, adPV, 
-      carouselPosition, startTime, endTime, 
+    insert into backend_user (userCode, userName, userType, 
       createdBy, creationDate, modifyBy, 
-      modifyDate)
-    values (#{appId,jdbcType=BIGINT}, #{adPicPath,jdbcType=VARCHAR}, #{adPV,jdbcType=BIGINT}, 
-      #{carouselPosition,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      modifyDate, userPassword)
+    values (#{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userType,jdbcType=BIGINT}, 
       #{createdBy,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=BIGINT}, 
-      #{modifyDate,jdbcType=TIMESTAMP})
+      #{modifyDate,jdbcType=TIMESTAMP}, #{userPassword,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zyd.appinfo.pojo.BackendUser" useGeneratedKeys="true">
-    insert into ad_promotion
+    insert into backend_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="appId != null">
-        appId,
+      <if test="userCode != null">
+        userCode,
       </if>
-      <if test="adPicPath != null">
-        adPicPath,
+      <if test="userName != null">
+        userName,
       </if>
-      <if test="adPV != null">
-        adPV,
-      </if>
-      <if test="carouselPosition != null">
-        carouselPosition,
-      </if>
-      <if test="startTime != null">
-        startTime,
-      </if>
-      <if test="endTime != null">
-        endTime,
+      <if test="userType != null">
+        userType,
       </if>
       <if test="createdBy != null">
         createdBy,
@@ -71,25 +58,19 @@
       <if test="modifyDate != null">
         modifyDate,
       </if>
+      <if test="userPassword != null">
+        userPassword,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="appId != null">
-        #{appId,jdbcType=BIGINT},
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
       </if>
-      <if test="adPicPath != null">
-        #{adPicPath,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="adPV != null">
-        #{adPV,jdbcType=BIGINT},
-      </if>
-      <if test="carouselPosition != null">
-        #{carouselPosition,jdbcType=INTEGER},
-      </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
+      <if test="userType != null">
+        #{userType,jdbcType=BIGINT},
       </if>
       <if test="createdBy != null">
         #{createdBy,jdbcType=BIGINT},
@@ -103,28 +84,22 @@
       <if test="modifyDate != null">
         #{modifyDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.zyd.appinfo.pojo.BackendUser">
-    update ad_promotion
+    update backend_user
     <set>
-      <if test="appId != null">
-        appId = #{appId,jdbcType=BIGINT},
+      <if test="userCode != null">
+        userCode = #{userCode,jdbcType=VARCHAR},
       </if>
-      <if test="adPicPath != null">
-        adPicPath = #{adPicPath,jdbcType=VARCHAR},
+      <if test="userName != null">
+        userName = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="adPV != null">
-        adPV = #{adPV,jdbcType=BIGINT},
-      </if>
-      <if test="carouselPosition != null">
-        carouselPosition = #{carouselPosition,jdbcType=INTEGER},
-      </if>
-      <if test="startTime != null">
-        startTime = #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        endTime = #{endTime,jdbcType=TIMESTAMP},
+      <if test="userType != null">
+        userType = #{userType,jdbcType=BIGINT},
       </if>
       <if test="createdBy != null">
         createdBy = #{createdBy,jdbcType=BIGINT},
@@ -138,21 +113,22 @@
       <if test="modifyDate != null">
         modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="userPassword != null">
+        userPassword = #{userPassword,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zyd.appinfo.pojo.BackendUser">
-    update ad_promotion
-    set appId = #{appId,jdbcType=BIGINT},
-      adPicPath = #{adPicPath,jdbcType=VARCHAR},
-      adPV = #{adPV,jdbcType=BIGINT},
-      carouselPosition = #{carouselPosition,jdbcType=INTEGER},
-      startTime = #{startTime,jdbcType=TIMESTAMP},
-      endTime = #{endTime,jdbcType=TIMESTAMP},
+    update backend_user
+    set userCode = #{userCode,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR},
+      userType = #{userType,jdbcType=BIGINT},
       createdBy = #{createdBy,jdbcType=BIGINT},
       creationDate = #{creationDate,jdbcType=TIMESTAMP},
       modifyBy = #{modifyBy,jdbcType=BIGINT},
-      modifyDate = #{modifyDate,jdbcType=TIMESTAMP}
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      userPassword = #{userPassword,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,17 +1,10 @@
 package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.AppInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AppInfoMapper {
-    int deleteByPrimaryKey(Long id);
-
-    int insert(AppInfo record);
-
-    int insertSelective(AppInfo record);
-
-    AppInfo selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(AppInfo record);
-
-    int updateByPrimaryKey(AppInfo record);
+    List<AppInfo> findAppByAppInfo(@Param("appInfo") AppInfo appInfo, @Param("start") Integer start);
 }

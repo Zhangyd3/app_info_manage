@@ -4,44 +4,34 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * ad_promotion
+ * data_dictionary
  * @author 
  */
 public class DataDictionary implements Serializable {
     /**
-     * 主键id
+     * 主键ID
      */
     private Long id;
 
     /**
-     * appId（来源于：app_info表的主键id）
+     * 类型编码
      */
-    private Long appId;
+    private String typeCode;
 
     /**
-     * 广告图片存储路径
+     * 类型名称
      */
-    private String adPicPath;
+    private String typeName;
 
     /**
-     * 广告点击量
+     * 类型值ID
      */
-    private Long adPV;
+    private Long valueId;
 
     /**
-     * 轮播位（1-n）
+     * 类型值Name
      */
-    private Integer carouselPosition;
-
-    /**
-     * 起效时间
-     */
-    private Date startTime;
-
-    /**
-     * 失效时间
-     */
-    private Date endTime;
+    private String valueName;
 
     /**
      * 创建者（来源于backend_user用户表的用户id）
@@ -73,52 +63,36 @@ public class DataDictionary implements Serializable {
         this.id = id;
     }
 
-    public Long getAppId() {
-        return appId;
+    public String getTypeCode() {
+        return typeCode;
     }
 
-    public void setAppId(Long appId) {
-        this.appId = appId;
+    public void setTypeCode(String typeCode) {
+        this.typeCode = typeCode;
     }
 
-    public String getAdPicPath() {
-        return adPicPath;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setAdPicPath(String adPicPath) {
-        this.adPicPath = adPicPath;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
-    public Long getAdPV() {
-        return adPV;
+    public Long getValueId() {
+        return valueId;
     }
 
-    public void setAdPV(Long adPV) {
-        this.adPV = adPV;
+    public void setValueId(Long valueId) {
+        this.valueId = valueId;
     }
 
-    public Integer getCarouselPosition() {
-        return carouselPosition;
+    public String getValueName() {
+        return valueName;
     }
 
-    public void setCarouselPosition(Integer carouselPosition) {
-        this.carouselPosition = carouselPosition;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setValueName(String valueName) {
+        this.valueName = valueName;
     }
 
     public Long getCreatedBy() {

@@ -1,10 +1,11 @@
 package com.zyd.appinfo.pojo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * ad_promotion
+ * app_version
  * @author 
  */
 public class AppVersion implements Serializable {
@@ -19,32 +20,32 @@ public class AppVersion implements Serializable {
     private Long appId;
 
     /**
-     * 广告图片存储路径
+     * 版本号
      */
-    private String adPicPath;
+    private String versionNo;
 
     /**
-     * 广告点击量
+     * 版本介绍
      */
-    private Long adPV;
+    private String versionInfo;
 
     /**
-     * 轮播位（1-n）
+     * 发布状态（来源于：data_dictionary，1 不发布 2 已发布 3 预发布）
      */
-    private Integer carouselPosition;
+    private Long publishStatus;
 
     /**
-     * 起效时间
+     * 下载链接
      */
-    private Date startTime;
+    private String downloadLink;
 
     /**
-     * 失效时间
+     * 版本大小（单位：M）
      */
-    private Date endTime;
+    private BigDecimal versionSize;
 
     /**
-     * 创建者（来源于backend_user用户表的用户id）
+     * 创建者（来源于dev_user开发者信息表的用户id）
      */
     private Long createdBy;
 
@@ -54,7 +55,7 @@ public class AppVersion implements Serializable {
     private Date creationDate;
 
     /**
-     * 更新者（来源于backend_user用户表的用户id）
+     * 更新者（来源于dev_user开发者信息表的用户id）
      */
     private Long modifyBy;
 
@@ -62,6 +63,16 @@ public class AppVersion implements Serializable {
      * 最新更新时间
      */
     private Date modifyDate;
+
+    /**
+     * apk文件的服务器存储路径
+     */
+    private String apkLocPath;
+
+    /**
+     * 上传的apk文件名称
+     */
+    private String apkFileName;
 
     private static final long serialVersionUID = 1L;
 
@@ -81,44 +92,44 @@ public class AppVersion implements Serializable {
         this.appId = appId;
     }
 
-    public String getAdPicPath() {
-        return adPicPath;
+    public String getVersionNo() {
+        return versionNo;
     }
 
-    public void setAdPicPath(String adPicPath) {
-        this.adPicPath = adPicPath;
+    public void setVersionNo(String versionNo) {
+        this.versionNo = versionNo;
     }
 
-    public Long getAdPV() {
-        return adPV;
+    public String getVersionInfo() {
+        return versionInfo;
     }
 
-    public void setAdPV(Long adPV) {
-        this.adPV = adPV;
+    public void setVersionInfo(String versionInfo) {
+        this.versionInfo = versionInfo;
     }
 
-    public Integer getCarouselPosition() {
-        return carouselPosition;
+    public Long getPublishStatus() {
+        return publishStatus;
     }
 
-    public void setCarouselPosition(Integer carouselPosition) {
-        this.carouselPosition = carouselPosition;
+    public void setPublishStatus(Long publishStatus) {
+        this.publishStatus = publishStatus;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public String getDownloadLink() {
+        return downloadLink;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setDownloadLink(String downloadLink) {
+        this.downloadLink = downloadLink;
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public BigDecimal getVersionSize() {
+        return versionSize;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setVersionSize(BigDecimal versionSize) {
+        this.versionSize = versionSize;
     }
 
     public Long getCreatedBy() {
@@ -151,5 +162,21 @@ public class AppVersion implements Serializable {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    public String getApkLocPath() {
+        return apkLocPath;
+    }
+
+    public void setApkLocPath(String apkLocPath) {
+        this.apkLocPath = apkLocPath;
+    }
+
+    public String getApkFileName() {
+        return apkFileName;
+    }
+
+    public void setApkFileName(String apkFileName) {
+        this.apkFileName = apkFileName;
     }
 }

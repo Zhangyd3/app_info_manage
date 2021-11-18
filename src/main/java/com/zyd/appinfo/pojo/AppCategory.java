@@ -4,44 +4,29 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * ad_promotion
+ * app_category
  * @author 
  */
 public class AppCategory implements Serializable {
     /**
-     * 主键id
+     * 主键ID
      */
     private Long id;
 
     /**
-     * appId（来源于：app_info表的主键id）
+     * 分类编码
      */
-    private Long appId;
+    private String categoryCode;
 
     /**
-     * 广告图片存储路径
+     * 分类名称
      */
-    private String adPicPath;
+    private String categoryName;
 
     /**
-     * 广告点击量
+     * 父级节点id
      */
-    private Long adPV;
-
-    /**
-     * 轮播位（1-n）
-     */
-    private Integer carouselPosition;
-
-    /**
-     * 起效时间
-     */
-    private Date startTime;
-
-    /**
-     * 失效时间
-     */
-    private Date endTime;
+    private Long parentId;
 
     /**
      * 创建者（来源于backend_user用户表的用户id）
@@ -51,7 +36,7 @@ public class AppCategory implements Serializable {
     /**
      * 创建时间
      */
-    private Date creationDate;
+    private Date creationTime;
 
     /**
      * 更新者（来源于backend_user用户表的用户id）
@@ -73,52 +58,28 @@ public class AppCategory implements Serializable {
         this.id = id;
     }
 
-    public Long getAppId() {
-        return appId;
+    public String getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setAppId(Long appId) {
-        this.appId = appId;
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
     }
 
-    public String getAdPicPath() {
-        return adPicPath;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setAdPicPath(String adPicPath) {
-        this.adPicPath = adPicPath;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public Long getAdPV() {
-        return adPV;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setAdPV(Long adPV) {
-        this.adPV = adPV;
-    }
-
-    public Integer getCarouselPosition() {
-        return carouselPosition;
-    }
-
-    public void setCarouselPosition(Integer carouselPosition) {
-        this.carouselPosition = carouselPosition;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public Long getCreatedBy() {
@@ -129,12 +90,12 @@ public class AppCategory implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public Date getCreationTime() {
+        return creationTime;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
     }
 
     public Long getModifyBy() {
