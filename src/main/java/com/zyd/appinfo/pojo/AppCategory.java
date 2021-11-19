@@ -49,6 +49,15 @@ public class AppCategory implements Serializable {
     private Date modifyDate;
 
     private static final long serialVersionUID = 1L;
+    private Integer level;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
     public Long getId() {
         return id;

@@ -1,5 +1,7 @@
 package com.zyd.appinfo.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -43,6 +45,7 @@ public class AppInfo implements Serializable {
     /**
      * 更新日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date updateDate;
 
     /**
@@ -63,11 +66,13 @@ public class AppInfo implements Serializable {
     /**
      * 上架时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date onSaleDate;
 
     /**
      * 下架时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date offSaleDate;
 
     /**
@@ -105,6 +110,7 @@ public class AppInfo implements Serializable {
     /**
      * 创建时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date creationDate;
 
     /**
@@ -115,6 +121,7 @@ public class AppInfo implements Serializable {
     /**
      * 最新更新时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date modifyDate;
 
     /**

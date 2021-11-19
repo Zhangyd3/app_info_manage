@@ -5,4 +5,7 @@
   <select id="findByParentId" resultType="com.zyd.appinfo.pojo.AppCategory">
     select id, categoryCode, categoryName, parentId, createdBy, creationTime, modifyBy, modifyDate from app_category where parentId=#{id}
   </select>
+    <select id="findByLevel" resultType="com.zyd.appinfo.pojo.AppCategory">
+      select id, categoryCode, categoryName, parentId, createdBy, creationTime, modifyBy, modifyDate from app_category where level=#{level}
+    </select>
 </mapper>

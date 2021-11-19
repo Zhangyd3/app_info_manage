@@ -57,11 +57,11 @@
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
               <option name="daoName" value="AppInfoMapper" />
-              <option name="daoPackage" value="com.zyd.appinfo.mapper" />
+              <option name="daoPackage" value="com.zyd.test" />
               <option name="daoPostfix" value="Mapper" />
               <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="AppInfo" />
-              <option name="modelPackage" value="com.zyd.appinfo.pojo" />
+              <option name="modelPackage" value="com.zyd.test" />
               <option name="name" value="app_info" />
               <option name="overrideJava" value="true" />
               <option name="overrideXML" value="true" />
@@ -71,7 +71,7 @@
               <option name="useActualColumnNames" value="true" />
               <option name="useSchemaPrefix" value="true" />
               <option name="xmlMvnPath" value="src/main/resources" />
-              <option name="xmlPackage" value="mapping" />
+              <option name="xmlPackage" value="packge" />
             </Config>
           </value>
         </entry>

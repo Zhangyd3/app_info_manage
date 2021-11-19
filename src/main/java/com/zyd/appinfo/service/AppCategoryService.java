@@ -1,10 +1,10 @@
-package com.zyd.appinfo.mapper;
+package com.zyd.appinfo.service;
 
 import com.zyd.appinfo.pojo.AppCategory;
 
 import java.util.List;
 
-public interface AppCategoryMapper {
+public interface AppCategoryService {
     List<AppCategory> findByParentId(Integer id);
     List<AppCategory> findByLevel(Integer level);
 }

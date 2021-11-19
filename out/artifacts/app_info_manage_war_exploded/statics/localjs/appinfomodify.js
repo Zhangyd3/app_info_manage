@@ -73,7 +73,7 @@ $(function(){
 	var cl2 = $("#cl2").val();
 	var cl3 = $("#cl3").val();
 	//动态加载一级分类列表
-	loadCategoryLevel(null,cl1,"categoryLevel1");
+	loadCategoryLevel(0,cl1,"categoryLevel1");
 	//动态加载二级分类列表
 	loadCategoryLevel(cl1,cl2,"categoryLevel2");
 	//动态加载三级分类列表

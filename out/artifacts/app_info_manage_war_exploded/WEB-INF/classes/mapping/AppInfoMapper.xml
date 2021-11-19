@@ -2,8 +2,83 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zyd.appinfo.mapper.AppInfoMapper">
   <cache></cache>
+  <update id="updateAppInfo">
+    update app_info
+    <set>
+      <if test="softwareName != null">
+        softwareName = #{softwareName},
+      </if>
+      <if test="APKName != null">
+        APKName = #{APKName},
+      </if>
+      <if test="supportROM != null">
+        supportROM = #{supportROM},
+      </if>
+      <if test="interfaceLanguage != null">
+        interfaceLanguage = #{interfaceLanguage},
+      </if>
+      <if test="softwareSize != null">
+        softwareSize = #{softwareSize},
+      </if>
+      <if test="updateDate != null">
+        updateDate = #{updateDate},
+      </if>
+      <if test="devId != null">
+        devId = #{devId},
+      </if>
+      <if test="appInfo != null">
+        appInfo = #{appInfo},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="onSaleDate != null">
+        onSaleDate = #{onSaleDate},
+      </if>
+      <if test="offSaleDate != null">
+        offSaleDate = #{offSaleDate},
+      </if>
+      <if test="flatformId != null">
+        flatformId = #{flatformId},
+      </if>
+      <if test="categoryLevel3 != null">
+        categoryLevel3 = #{categoryLevel3},
+      </if>
+      <if test="downloads != null">
+        downloads = #{downloads},
+      </if>
+      <if test="createdBy != null">
+        createdBy = #{createdBy},
+      </if>
+      <if test="creationDate != null">
+        creationDate = #{creationDate},
+      </if>
+      <if test="modifyBy != null">
+        modifyBy = #{modifyBy},
+      </if>
+      <if test="modifyDate != null">
+        modifyDate = #{modifyDate},
+      </if>
+      <if test="categoryLevel1 != null">
+        categoryLevel1 = #{categoryLevel1},
+      </if>
+      <if test="categoryLevel2 != null">
+        categoryLevel2 = #{categoryLevel2},
+      </if>
+      <if test="logoPicPath != null">
+        logoPicPath = #{logoPicPath},
+      </if>
+      <if test="logoLocPath != null">
+        logoLocPath = #{logoLocPath},
+      </if>
+      <if test="versionId != null">
+        versionId = #{versionId},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
   <select id="findAppByAppInfo" resultType="com.zyd.appinfo.pojo.AppInfo">
-    select APKName,softwareName,softwareSize,flatformId,dd2.valueName flatformName,status,dd.valueName statusName,downloads,versionId,av.versionNo versionNo,categoryLevel1,categoryLevel2,categoryLevel3,ac1.categoryName categoryLevel1Name,ac2.categoryName categoryLevel2Name,ac3.categoryName categoryLevel3Name  from app_info i left join data_dictionary dd on i.status = dd.valueId and dd.typeCode='APP_STATUS'
+    select i.id,APKName,softwareName,softwareSize,flatformId,dd2.valueName flatformName,status,dd.valueName statusName,downloads,versionId,av.versionNo versionNo,categoryLevel1,categoryLevel2,categoryLevel3,ac1.categoryName categoryLevel1Name,ac2.categoryName categoryLevel2Name,ac3.categoryName categoryLevel3Name  from app_info i left join data_dictionary dd on i.status = dd.valueId and dd.typeCode='APP_STATUS'
     left join app_category ac1 on i.categoryLevel1 = ac1.id
     left join data_dictionary dd2 on i.flatformId = dd2.valueId and dd2.typeCode='APP_FLATFORM'
     left join app_category ac2 on i.categoryLevel2 = ac2.id
@@ -31,4 +106,30 @@
     </where>
      limit #{start},5
   </select>
+    <select id="getCountByAppInfo" resultType="java.lang.Integer">
+      select count(id) from app_info
+      <where>
+        <if test="appInfo.categoryLevel1 !=null and appInfo.categoryLevel1 != 0 ">
+          categoryLevel1=#{appInfo.categoryLevel1}
+        </if>
+        <if test="appInfo.categoryLevel2 !=null and appInfo.categoryLevel2 != 0 ">
+          and categoryLevel2=#{appInfo.categoryLevel2}
+        </if>
+        <if test="appInfo.categoryLevel3 !=null and appInfo.categoryLevel3 != 0 ">
+          and categoryLevel3=#{appInfo.categoryLevel3}
+        </if>
+        <if test="appInfo.flatformId !=null and appInfo.flatformId != 0 ">
+          and flatformId=#{appInfo.flatformId}
+        </if>
+        <if test="appInfo.status !=null and appInfo.status != 0 ">
+          and status=#{appInfo.status}
+        </if>
+        <if test="appInfo.softwareName !=null ">
+          and softwareName like concat('%',#{appInfo.softwareName},'%')
+        </if>
+      </where>
+    </select>
+    <select id="findAppByid" resultType="com.zyd.appinfo.pojo.AppInfo">
+        select id, softwareName, APKName, supportROM, interfaceLanguage, softwareSize, updateDate, devId, appInfo, status, onSaleDate, offSaleDate, flatformId, categoryLevel3, downloads, createdBy, creationDate, modifyBy, modifyDate, categoryLevel1, categoryLevel2, logoPicPath, logoLocPath, versionId from app_info where id=#{id}
+    </select>
 </mapper>
