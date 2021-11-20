@@ -56,10 +56,16 @@ public class AppInfoController {
         model.addAttribute("appInfo", appInfo);
         return "developer/appinfomodify";
     }
-    @RequestMapping("/categorylevellist.json2")
+    @RequestMapping("/categorylevellist.json")
     @ResponseBody
     private List<AppCategory> datadictionaryList(Integer pid){
         List<AppCategory> byParentId = appCategoryService.findByParentId(pid);
         return byParentId;
+    }
+    @RequestMapping("/datadictionarylist.json")
+    @ResponseBody
+        private List<DataDictionary> datadictionarylist(String tcode){
+        List<DataDictionary> typeCode = dataDictionaryService.findByTypeCode(tcode);
+        return typeCode;
     }
 }
