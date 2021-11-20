@@ -130,6 +130,6 @@
       </where>
     </select>
     <select id="findAppByid" resultType="com.zyd.appinfo.pojo.AppInfo">
-        select id, softwareName, APKName, supportROM, interfaceLanguage, softwareSize, updateDate, devId, appInfo, status, onSaleDate, offSaleDate, flatformId, categoryLevel3, downloads, createdBy, creationDate, modifyBy, modifyDate, categoryLevel1, categoryLevel2, logoPicPath, logoLocPath, versionId from app_info where id=#{id}
+        select id, softwareName, APKName, supportROM, interfaceLanguage, softwareSize, updateDate, devId, appInfo, status ,dd.valueName statusName, onSaleDate, offSaleDate, flatformId, categoryLevel3, downloads, createdBy, creationDate, modifyBy, modifyDate, categoryLevel1, categoryLevel2, logoPicPath, logoLocPath, versionId from app_info i left join data_dictionary dd on i.status = dd.valueId and dd.typeCode='APP_STATUS' where id=#{id}
     </select>
 </mapper>
