@@ -1,17 +1,24 @@
 package com.zyd.appinfo.mapper;
 
 import com.zyd.appinfo.pojo.AppVersion;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AppVersionMapper {
-    int deleteByPrimaryKey(Long id);
+    Integer deleteByPrimaryKey(Long id);
 
-    int insert(AppVersion record);
+    Integer insert(AppVersion record);
 
-    int insertSelective(AppVersion record);
+    Integer insertSelective(AppVersion appVersion);
 
     AppVersion selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(AppVersion record);
+    Integer updateByPrimaryKeySelective(AppVersion appVersion);
 
-    int updateByPrimaryKey(AppVersion record);
+    Integer updateByPrimaryKey(AppVersion record);
+    List<AppVersion> findByAppInfoId(Integer id);
+    AppVersion findByAppIdAndVid(@Param("aid") Integer aid, @Param("vid") Integer vid);
+    Integer delApkPath(Integer id);
+
 }

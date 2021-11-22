@@ -26,10 +26,19 @@
     from app_version
     where id = #{id,jdbcType=BIGINT}
   </select>
+    <select id="findByAppInfoId" resultType="com.zyd.appinfo.pojo.AppVersion">
+      select ver.*,info.softwareName appName from app_version ver,app_info info,data_dictionary dic where appId=#{id} and info.id=appid and ver.publishStatus=dic.valueId and dic.typeCode='APP_STATUS'
+    </select>
+  <select id="findByAppIdAndVid" resultType="com.zyd.appinfo.pojo.AppVersion">
+    select ver.*,info.softwareName appName from app_version ver,app_info info,data_dictionary dic where appId=#{aid} and info.id=appid and ver.publishStatus=dic.valueId and dic.typeCode='APP_STATUS' and ver.id=#{vid}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from app_version
     where id = #{id,jdbcType=BIGINT}
   </delete>
+  <update id="delApkPath">
+    update app_version set apkLocPath='',apkFileName='' where id=#{id}
+  </update>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zyd.appinfo.pojo.AppVersion" useGeneratedKeys="true">
     insert into app_version (appId, versionNo, versionInfo, 
       publishStatus, downloadLink, versionSize, 

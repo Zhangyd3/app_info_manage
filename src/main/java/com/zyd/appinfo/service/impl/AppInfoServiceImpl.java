@@ -3,7 +3,6 @@ package com.zyd.appinfo.service.impl;
 import com.zyd.appinfo.mapper.AppInfoMapper;
 import com.zyd.appinfo.pojo.AppInfo;
 import com.zyd.appinfo.service.AppInfoService;
-import com.zyd.appinfo.tools.ConfigManager;
 import com.zyd.appinfo.tools.Constants;
 import com.zyd.appinfo.tools.PageSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -51,8 +51,36 @@ public class AppInfoServiceImpl implements AppInfoService {
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+    public Integer apkNameExist(String apkName) {
+        return appInfoMapper.apkNameExist(apkName);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public Integer updateAppInfo(AppInfo appInfo) {
         return appInfoMapper.updateAppInfo(appInfo);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Integer delAppLogoFile(Integer id, String logopath) {
+        File file=new File(logopath);
+        if (file.exists()){
+            file.delete();
+        }
+        return appInfoMapper.delAppLogoFile(id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Integer insertAppByAppInfo(AppInfo appInfo) {
+        return appInfoMapper.insertAppByAppInfo(appInfo);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Integer delAppInfo(Integer id) {
+        return appInfoMapper.delAppInfo(id);
     }
 
 }

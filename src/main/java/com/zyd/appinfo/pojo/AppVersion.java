@@ -6,7 +6,8 @@ import java.util.Date;
 
 /**
  * app_version
- * @author 
+ *
+ * @author
  */
 public class AppVersion implements Serializable {
     /**
@@ -73,8 +74,26 @@ public class AppVersion implements Serializable {
      * 上传的apk文件名称
      */
     private String apkFileName;
+    private String appName;
+    private String publishStatusName;
 
     private static final long serialVersionUID = 1L;
+
+    public String getPublishStatusName() {
+        return publishStatusName;
+    }
+
+    public void setPublishStatusName(String publishStatusName) {
+        this.publishStatusName = publishStatusName;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
 
     public Long getId() {
         return id;

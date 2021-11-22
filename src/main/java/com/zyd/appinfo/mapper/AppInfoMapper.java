@@ -10,4 +10,9 @@ public interface AppInfoMapper {
     AppInfo findAppByid(Integer id);
     Integer updateAppInfo(AppInfo appInfo);
     Integer getCountByAppInfo(@Param("appInfo") AppInfo appInfo);
+    Integer delAppLogoFile(Integer id);
+    Integer delAppInfo(Integer id);
+    Integer apkNameExist(String apkName);
+    Integer updateAppVersion(@Param("vid") Long vid, @Param("id") Long id);
+    Integer insertAppByAppInfo(AppInfo appInfo);
 }
